@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vote</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <!-- MultiStep Form -->
+    <div class="row voting-form">
+      <div class="col-md-8 col-md-offset-2">
+        <form id="msform">
+          <!-- progressbar -->
+          <ul id="progressbar">
+            <li class="active">President</li>
+            <li>Vice President</li>
+            <li>General Secretary</li>
+            <li>Finalize</li>
+          </ul>
+
+          <!-- fieldsets -->
+          <fieldset>
+            <h2 class="fs-title">Vote for President</h2>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="president"
+                  value="Donald Trump"
+                  id="presidentDT"
+                />
+                <label class="form-check-label" for="presidentDT">
+                  Donald Trump
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://www.whitehouse.gov/wp-content/uploads/2021/01/45_donald_trump.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="president"
+                  value="Joe Biden"
+                  id="presidentJB"
+                />
+                <label class="form-check-label" for="presidentJB">
+                  Joe Biden
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Joe_Biden_official_portrait_2013_cropped.jpg/1200px-Joe_Biden_official_portrait_2013_cropped.jpg"
+                />
+              </div>
+            </div>
+
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+
+          <fieldset id="vicePresident">
+            <h2 class="fs-title">Vote for Vice President</h2>
+            <h4>Select 2 candidates</h4>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="vicePresident"
+                  value="Kamala Harris"
+                  id="vicePresidentKH"
+                />
+                <label class="form-check-label" for="vicePresidentKH">
+                  Kamala Harris
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="data:image/jpeg;base64,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"
+                />
+              </div>
+            </div>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="vicePresident"
+                  value="Susan Rice"
+                  id="vicePresidentSR"
+                />
+                <label class="form-check-label" for="vicePresidentSR">
+                  Susan Rice
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Susan_Rice_official_photo.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="vicePresident"
+                  value="Gretchen Whitmer"
+                  id="vicePresidentGW"
+                />
+                <label class="form-check-label" for="vicePresidentGW">
+                  Gretchen Whitmer
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://www.michigan.gov/images/whitmer/GovWhitmerPort-Master_8x10_643959_7.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="vicePresident"
+                  value="Tammy Duckworth"
+                  id="vicePresidentTD"
+                />
+                <label class="form-check-label" for="vicePresidentTD">
+                  Tammy Duckworth
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://cdn.britannica.com/11/193111-050-1383218D/Tammy-Duckworth.jpg"
+                />
+              </div>
+            </div>
+
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Next"
+            />
+          </fieldset>
+
+          <fieldset>
+            <h2 class="fs-title">Vote for General Secretary</h2>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="generalSecretary"
+                  value="Mathias CORMANN"
+                  id="generalSecretaryMC"
+                />
+                <label class="form-check-label" for="generalSecretaryMC">
+                  Mathias CORMANN
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Mathias_Cormann_-_Senate_portrait_2016.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="generalSecretary"
+                  value="William MORNEAU"
+                  id="generalSecretaryWM"
+                />
+                <label class="form-check-label" for="generalSecretaryWM">
+                  William MORNEAU
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/59/Bill_Morneau_%28September_2020%29.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="candidate">
+              <div class="candidate-info">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="generalSecretary"
+                  value="Christopher LIDDELL"
+                  id="generalSecretaryCL"
+                />
+                <label class="form-check-label" for="generalSecretaryCL">
+                  Christopher LIDDELL
+                </label>
+              </div>
+              <div class="candidate-image">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Chris_Liddell_official_photo.jpg"
+                />
+              </div>
+            </div>
+
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="button"
+              name="next"
+              class="next final action-button"
+              value="Next"
+            />
+          </fieldset>
+
+          <fieldset class="review">
+            <h2 class="fs-title">Finalize your votes</h2>
+
+            <p><b>President:</b> <span class="finalPresident"></span></p>
+            <p>
+              <b>Vice President:</b> <span class="finalVicePresident"></span>
+            </p>
+            <p>
+              <b>General Secretary:</b>
+              <span class="finalGeneralSecretary"></span>
+            </p>
+
+            <input
+              type="button"
+              name="previous"
+              class="previous action-button-previous"
+              value="Previous"
+            />
+            <input
+              type="submit"
+              name="submit"
+              class="submit action-button"
+              value="Submit"
+            />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div class="row success">
+      <div class="col-md-8 col-md-offset-2">
+          <h3>Successful! Thanks for your valuable vote!</h3>
+      </div>
+    </div>
+  </body>
+</html>
